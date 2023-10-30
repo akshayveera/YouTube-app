@@ -1,10 +1,13 @@
 
 import './App.css';
+import Body from './components/Body';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className='text-3xl text-red-700'>
-      Hello Web, I'm building YouTube clone
+    <div>
+      <Header/>
+      <Body/>
     </div>
   );
 }
