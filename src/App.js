@@ -8,7 +8,7 @@ import store from './components/utils/store';
 function App() {
   return (
     <Provider store={store}>
-      <div>
+      <div className='overflow-x-hidden'>
         <Header/>
         <Body/>
       </div>
