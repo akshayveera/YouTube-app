@@ -7,6 +7,8 @@ const VideoCard = ({info}) => {
     const {channelTitle, thumbnails, title} = snippet;
     const {viewCount} = statistics;
 
+    
+
   return (
     <div className='w-80 p-2 m-2'>
         <img className='rounded-lg' src={thumbnails.medium.url} alt="" />
