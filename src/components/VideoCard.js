@@ -2,12 +2,10 @@
 import React from 'react'
 
 const VideoCard = ({info}) => {
-    console.log(info);
+    // console.log(info);
     const { snippet, statistics} = info;
     const {channelTitle, thumbnails, title} = snippet;
     const {viewCount} = statistics;
-
-    
 
   return (
     <div className='w-80 p-2 m-2'>
@@ -20,5 +18,6 @@ const VideoCard = ({info}) => {
     </div>
   )
 }
+
 
 export default VideoCard

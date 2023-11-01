@@ -9,17 +9,11 @@ const WatchPage = () => {
   const dispatch = useDispatch();
 
   const [searchParams] = useSearchParams();
-
-  console.log(searchParams.get("v"));
-  
+  // console.log(searchParams.get("v"));  
 
   useEffect(()=>{
-    handleEffect();
-  }, [])
-
-  const handleEffect = ()=>{
     dispatch(closeMenu());
-  }
+  }, [])
 
   return (
     <div className='ml-16 mt-5'>
