@@ -5,9 +5,10 @@ import yt from "../assets/header/yt.png"
 import mic from "../assets/header/mic.png"
 import user from "../assets/header/user.png"
 import search from "../assets/header/search.png"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from './utils/appSlice'
 import {YT_SEARCH_SUGGEST_API} from "./utils/constants"
+import { cacheResults } from './utils/searchSlice'
 
 const Header = () => {
 
@@ -21,6 +22,8 @@ const Header = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
 
+    const searchCache = useSelector((store)=>store.search)
+
     useEffect(()=>{
         // first make API call for every key store
         
@@ -29,7 +32,13 @@ const Header = () => {
         // decline the API call
 
         // this is how debouncer is setup
-        const timer = setTimeout(()=>getSearchSuggestions(), 200);
+        const timer = setTimeout(()=>{
+            if(searchCache[searchQuery]){
+                setSuggestions(searchCache[searchQuery]);
+            }else{
+                getSearchSuggestions();
+            }
+        }, 200);
 
         return ()=>{
             clearTimeout(timer);
@@ -54,12 +63,19 @@ const Header = () => {
      */
 
     const getSearchSuggestions = async ()=>{
-        // console.log("API call - "+ searchQuery);
+        console.log("API call - "+ searchQuery);
         const data = await fetch(YT_SEARCH_SUGGEST_API + searchQuery)
         const json = await data.json();
-        // console.log(json[1]);
+
         setSuggestions(json[1]);
-        // console.log(suggestions);
+
+        // update cache
+        dispatch(
+            cacheResults(
+                {[searchQuery]:json[1]}
+            )
+        );
+
     }
 
 

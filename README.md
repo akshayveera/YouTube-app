@@ -69,7 +69,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-Debouncing : controls the API call considering the time diff b/w two keys press
+
+
+### Debouncing : 
+        - controls the API call considering the time diff b/w two keys press
 
 typing slow = 200ms time diff b/w key press
 typing fast = 50ms time diff b/w key press
@@ -81,4 +84,27 @@ performace :
 Debouncing with 200ms
     - if (diff b/w two key strokes < 200ms) : decline API call
     - if (diff b/w two key strokes >= 200ms) : make API call
+
+
+### Cache :
+
+    - time complexity of search in array : O(n)
+    - time complexity of search in object : O(1)
+
+    - so it better to store the search results in object, rather than array
+    - map is more optimised than object, but for the sake of simplicity we are using object here
+
+    - there is also LRU cache - Least Recently Used Cache
+    - we can limit the no.of items we store in cache using this
+    - like we can limit it to only 100 and if the count increases, we remove the old stored items just like queue
+
+
+### search bar
+
+    - now our search bar is so powerful because
+        - we are using live API
+        - we are using debouncing
+        - we are using caching
+
+
 
