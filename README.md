@@ -102,9 +102,11 @@ Debouncing with 200ms
 ### search bar
 
     - now our search bar is so powerful because
-        - we are using live API
-        - we are using debouncing
-        - we are using caching
+        - we used live API
+        - we used debouncing
+        - we used caching
+        - we used redux store
+        - we used states 
 
 
 
