@@ -72,18 +72,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ### Debouncing : 
-        - controls the API call considering the time diff b/w two keys press
+    - controls the API call considering the time diff b/w two keys press
 
-typing slow = 200ms time diff b/w key press
-typing fast = 50ms time diff b/w key press
+    typing slow = 200ms time diff b/w key press
+    typing fast = 50ms time diff b/w key press
 
-performace : 
-    - iphone pro max = 14 letters * 1000(members) = 14000
-    - with debouncing = 3 API calls * 1000(members) = 3000
+    performace : 
+        - iphone pro max = 14 letters * 1000(members) = 14000
+        - with debouncing = 3 API calls * 1000(members) = 3000
 
-Debouncing with 200ms
-    - if (diff b/w two key strokes < 200ms) : decline API call
-    - if (diff b/w two key strokes >= 200ms) : make API call
+    Debouncing with 200ms
+        - if (diff b/w two key strokes < 200ms) : decline API call
+        - if (diff b/w two key strokes >= 200ms) : make API call
 
 
 ### Cache :
@@ -107,6 +107,22 @@ Debouncing with 200ms
         - we used caching
         - we used redux store
         - we used states 
+
+### live chat feature in YouTube
+
+    - there are two ways dealing with live data
+        1) WebSocket :
+            - in WebSockets bi-directional connection (or a handshake) is established between data layer of UI and server
+            - WebSockets is used in time critical applications like trading apps(zerodtha), messenger apps(whatsapp, insta) etc
+
+        2) API polling :
+            - API polling is where the client sends requests to an endpoint repeatedly. It then compares the requests to see if any of the information has changed. The requests can be at regular intervals or made with randomised delays or exponential backoff
+            - This is used if some delay of updation in live data is accepted like cricbuzz
+
+    - Which strategy is used in YouTube live chat ?
+        - YouTube live chat uses API polling with a regular intervavl around 1.5 sec
+
+    - We too used API polling for developing the live chat feature
 
 
 

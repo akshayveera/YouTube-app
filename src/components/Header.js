@@ -25,13 +25,7 @@ const Header = () => {
     const searchCache = useSelector((store)=>store.search)
 
     useEffect(()=>{
-        // first make API call for every key store
-        
 
-        // then if delay is less than 200ms between 2 key storkes
-        // decline the API call
-
-        // this is how debouncer is setup
         const timer = setTimeout(()=>{
             if(searchCache[searchQuery]){
                 setSuggestions(searchCache[searchQuery]);
@@ -45,31 +39,12 @@ const Header = () => {
         }
     },[searchQuery]);
 
-    /**
-     * 
-     * 
-     * key - i
-     *      - renders the component
-     *      - useEffect()
-     *          - setTimeOut - start timer : make API call after 200ms
-     * 
-     * key - in (below 200ms)
-     *      - destroys the existing component(unmount the existing component)
-     *          - return of useEffect is also executed : clearTimeOut (clears the timer)
-     *      - re-renders the component
-     *      - useEffect()
-     *          - setTimeOut - start timer : make API call after 200ms
-     * 
-     */
-
     const getSearchSuggestions = async ()=>{
-        console.log("API call - "+ searchQuery);
         const data = await fetch(YT_SEARCH_SUGGEST_API + searchQuery)
         const json = await data.json();
 
         setSuggestions(json[1]);
 
-        // update cache
         dispatch(
             cacheResults(
                 {[searchQuery]:json[1]}
