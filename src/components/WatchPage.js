@@ -39,19 +39,19 @@ const WatchPage = () => {
       </div>
       <div className=' w-full mr-24 ml-5 mt-5 p-3 '>
         <LiveChat/>
-        <form className='w-full flex my-1 mx-2 p-2 border border-gray-200 rounded-2xl'
+        <form className='w-full my-2 flex border border-gray-200 rounded-2xl relative'
         onSubmit={
           (e)=>{
             e.preventDefault(); 
           }
         }>
-          <input type="text" className='w-10/12 m-1 p-2' placeholder='write here' value={liveMsg} onChange={
+          <input type="text" className='w-10/12 py-2 px-4 rounded-2xl select-none outline-none' placeholder='write here' value={liveMsg} onChange={
             (eve)=>{
               setLiveMsg(eve.target.value);
             }
           }
           />
-          <button className='m-1 py-2 px-4 bg-gray-200 rounded-2xl' onClick={
+          <button className='py-2 px-4 bg-gray-200 rounded-2xl absolute right-0' onClick={
             ()=>{
               dispatch(addMessage({
                 name : "Akshay",

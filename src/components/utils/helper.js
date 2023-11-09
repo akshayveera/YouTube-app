@@ -42,3 +42,42 @@ export function generateRandomString(length) {
 
     return result;
 }
+
+
+export function nthPrime(n) {
+    let P = 0;
+
+    function isPrime(x) {
+        let isPrime= true;
+        
+        if(x==1)
+        {
+            return false;
+        }
+
+        for (let d = 2; d <= Math.sqrt(x); d++) {
+            if((x/d) % 1 == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        return isPrime;
+    }
+
+    for (let i = 1; 0 < n; i++) {
+        
+
+        if(isPrime(i)) {
+            P = i; n--;
+        }
+
+        // we can skip the even numbers
+        if(3 <= i){
+            i++;
+        }
+
+    }
+
+    return P;
+}
