@@ -56,3 +56,5 @@ const Demo2 = () => {
 }
 
 export default Demo2
+
+// Completed chapter : The end game (Namaste React) on 09-11-2023
