@@ -14,6 +14,7 @@ const SideBar = () => {
       <ul className='p-2 m-2'>
         <li className='font-bold'>Main</li>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/demo">Demo</Link></li>
         <li>Shorts</li>
         <li>Subscription</li>
         <li>Watch Later</li>

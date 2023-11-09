@@ -124,5 +124,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
     - We too used API polling for developing the live chat feature
 
+### difference between const,let, state and useRef in react
+
+    - when we try to update const variable it throws an error Type error : Assignment to constant variable
+    - when we update let variable in a component using a button, it updates in the memory but it doesn't render it to UI, because react doesn't track let and const variables it only tracks state variables
+    - when we update state variable, as react tracks state variable react renders the whole component and the UI is updated, but as re-rendering happens let variable is re-initalized to its initial value (the value of let is reset)
+    - when we update useRef variable, it doesn't render it to UI, but react tracks the variable, so when re-render happens it doesn't reset like let variable, the updated value of the ref variable is rendered to UI
+
+    - when the particular variable is updated 
+        - let : react doesn't tracks it, doesn't render to UI and resets when component is rendered(the updated value gets lost)
+        - state : react tracks it (so the updated value doesn't get lost) and renders to UI (when state variable is updated whole component gets re-rendered)
+        - useRef : react tracks it (so the updated value doesn't get lost), but it doesn't rendered to UI, but when the component is rendered the updated value of useRef is also rendered to UI 
+
 
 
