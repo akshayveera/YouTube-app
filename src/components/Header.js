@@ -55,11 +55,11 @@ const Header = () => {
 
 
   return (
-    <div className='flex justify-between w-full my-2 items-center'>
+    <div className='flex justify-between w-full my-2 items-center '>
         <div className='flex items-center gap-2 ml-5' >
-            <img src={hamburger} alt="hamburger" className='h-4 cursor-pointer' onClick={()=>handleClick()}/>
+            <img src={hamburger} alt="hamburger" className='h-5 cursor-pointer' onClick={()=>handleClick()}/>
             <a href="/">
-                <img src={yt} alt="YouTube Logo" className='h-14'/>
+                <img src={yt} alt="YouTube Logo" className='h-16'/>
             </a>
             
         </div>

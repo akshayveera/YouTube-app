@@ -24,7 +24,7 @@ const VideoContainer = () => {
   if(videos.length === 0) return null;
 
   return (
-    <div className='flex flex-wrap'>
+    <div className='flex flex-wrap h-[calc(100vh-137px)] overflow-y-scroll pl-4'>
       {videos.map((video)=>{
         return(
           <Link key={video.id} to={"watch?v="+video.id}>

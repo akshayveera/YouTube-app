@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const appSlice = createSlice({
     name : "app",
     initialState : {
-        isMenuOpen : true 
+        isMenuOpen : true,
+        isMenuAbsolute : false
     },
     reducers : {
         toggleMenu : (state)=>{
@@ -11,9 +12,15 @@ const appSlice = createSlice({
         },
         closeMenu : (state)=>{
             state.isMenuOpen = false;
+        },
+        makeMenuNormal : (state)=>{
+            state.isMenuAbsolute = false;
+        },
+        makeMenuAbsolute : (state)=>{
+            state.isMenuAbsolute = true;
         }
     }
 })
 
-export const {toggleMenu, closeMenu} = appSlice.actions;
+export const {toggleMenu, closeMenu, makeMenuNormal, makeMenuAbsolute} = appSlice.actions;
 export default appSlice.reducer;

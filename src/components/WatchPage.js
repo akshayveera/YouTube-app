@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { closeMenu } from './utils/appSlice'
+import { closeMenu, makeMenuAbsolute, makeMenuNormal } from './utils/appSlice'
 import { useDispatch } from 'react-redux'
 import { useSearchParams } from 'react-router-dom';
 import CommentsContainer from './CommentsContainer';
@@ -17,10 +17,15 @@ const WatchPage = () => {
 
   useEffect(()=>{
     dispatch(closeMenu());
+    dispatch(makeMenuAbsolute());
+
+    return ()=>{
+      dispatch(makeMenuNormal());
+    }
   }, [])
 
   return (
-    <div className='flex ml-24 w-full'>
+    <div className='flex ml-24 w-full h-[calc(100vh-80px)] overflow-y-scroll pl-4'>
       <div className='w-4/6'>
         <div className=' mt-5'>
           <iframe 
