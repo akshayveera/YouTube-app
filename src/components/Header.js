@@ -7,8 +7,10 @@ import user from "../assets/header/user.png"
 import search from "../assets/header/search.png"
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from './utils/appSlice'
-import {YT_SEARCH_SUGGEST_API} from "./utils/constants"
+import { YT_SEARCH_SUGGEST_API} from "./utils/constants"
 import { cacheResults } from './utils/searchSlice'
+import { Link } from 'react-router-dom'
+import { userNotSearched, userSearched } from './utils/searchResultsSlice'
 
 const Header = () => {
 
@@ -22,7 +24,10 @@ const Header = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
 
-    const searchCache = useSelector((store)=>store.search)
+    const searchCache = useSelector((store)=>store.search);
+    const searchEmpty = useSelector((store)=>store.searchResults.isSearchEmpty);
+
+    console.log()
 
     useEffect(()=>{
 
@@ -32,7 +37,7 @@ const Header = () => {
             }else{
                 getSearchSuggestions();
             }
-        }, 200);
+        }, 200);                
 
         return ()=>{
             clearTimeout(timer);
@@ -50,7 +55,6 @@ const Header = () => {
                 {[searchQuery]:json[1]}
             )
         );
-
     }
 
 
@@ -68,17 +72,35 @@ const Header = () => {
                 <input type="text" placeholder='search' className='h-4 p-5 pl-8 text-lg border border-gray-300 w-4/6 rounded-l-full '
                     value = {searchQuery}
                     onChange={(eve)=>{
+                        if(eve.target.value === ""){
+                            dispatch(userNotSearched());
+                        }else{
+                            dispatch(userSearched());
+                        }
+
                         setSearchQuery(eve.target.value);
                     }}
                     onFocus={()=>setShowSuggestion(true)}
-                    onBlur={()=>setShowSuggestion(false)}
+                    onBlur={()=>setShowSuggestion(false)}                    
                 />
-                <div className='py-3 px-7 border border-gray-300 rounded-r-full bg-gray-100 hover:bg-gray-200'>
-                    <img src={search} alt="search" className='h-4 '/>
-                </div>
+                {
+                    searchEmpty ? (
+                        <button className='py-3 px-7 border border-gray-300 rounded-r-full bg-gray-100 hover:bg-gray-200 cursor-pointer'>
+                            <img src={search} alt="search" className='h-4 '/>
+                        </button>
+                    ) : (
+                        <Link to={"/results?search_query=" + searchQuery}>
+                            <button 
+                            className='py-3 px-7 border border-gray-300 rounded-r-full bg-gray-100 hover:bg-gray-200'
+                            >
+                                <img src={search} alt="search" className='h-4 '/>
+                            </button>
+                        </Link>
+                    )
+                }
                 <div className='bg-gray-100 p-2.5 m-2 rounded-full hover:bg-gray-200'>
                     <img src={mic} alt="mic" className='h-5'/>
-                </div>
+                </div>                
             </div>
             {suggestions.length===0 ? null : showSuggestion && (
                 <div className='fixed top-14  bg-white w-4/12 p-2 m-1 shadow-xl rounded-xl border border-gray-300'>

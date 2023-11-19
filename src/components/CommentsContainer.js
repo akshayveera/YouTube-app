@@ -114,7 +114,7 @@ const commentsData = [
 ]
 
 const CommentCard = ({ data }) => {
-    const { name, text, replies } = data;
+    const { name, text } = data;
 
     return (
     <div className="flex gap-5 bg-gray-100 p-2 rounded-lg my-3">

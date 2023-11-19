@@ -44,7 +44,7 @@ const Demo2 = () => {
             className='p-2 m-2 px-4 bg-red-300 rounded-xl'
             onClick={()=>{            
                 ref.current = ref.current+1;
-                {console.log("ref = "+ref.current)}
+                console.log("ref = "+ref.current)
             }}>
                 increase ref (useRef)
             </button>

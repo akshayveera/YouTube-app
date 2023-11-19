@@ -50,13 +50,13 @@ export function nthPrime(n) {
     function isPrime(x) {
         let isPrime= true;
         
-        if(x==1)
+        if(x===1)
         {
             return false;
         }
 
         for (let d = 2; d <= Math.sqrt(x); d++) {
-            if((x/d) % 1 == 0) {
+            if((x/d) % 1 === 0) {
                 isPrime = false;
                 break;
             }
