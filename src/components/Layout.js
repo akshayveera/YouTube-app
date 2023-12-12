@@ -5,10 +5,10 @@ import { Outlet } from 'react-router-dom'
 
 const Layout = () => {
   return (
-    <>
+    <div className='overflow-x-hidden'>
         <Header/>
         <Outlet/>
-    </>
+    </div>
   )
 }
 

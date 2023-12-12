@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { YOUTUBE_VIDEOS_API } from './utils/constants';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const VideoContainer = () => {
 
@@ -21,10 +22,12 @@ const VideoContainer = () => {
     }
   }
 
+  const menu = useSelector(store => store.app.isMenuOpen)
+
   if(videos?.length === 0) return null;
 
   return (
-    <div className='flex flex-wrap h-[calc(100vh-137px)] overflow-y-scroll pl-4'>
+    <div className={'flex flex-wrap h-[calc(100vh-137px)] overflow-y-scroll  no-scrollbar ' + ( menu ? "ml-4" : "ml-10")} >
       {videos?.map((video)=>{
         return(
           <Link key={video?.id} to={"watch?v="+video?.id}>

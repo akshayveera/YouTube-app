@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import ChatMessage from './ChatMessage'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMessage } from './utils/liveChatSlice'
-import { generateRandomName, generateRandomString } from './utils/helper'
+import { generateRandomName, generateRandomMessage } from './utils/helper'
 
 const LiveChat = () => {
 
@@ -15,7 +15,7 @@ const LiveChat = () => {
         const i = setInterval(()=>{
             dispatch(addMessage({
                 name : generateRandomName(),
-                msg : generateRandomString(20)
+                msg : generateRandomMessage()
             }))
 
         }, 1000)
@@ -26,7 +26,7 @@ const LiveChat = () => {
     }, [])
 
   return (
-    <div className='bg-gray-100 rounded-lg h-[480px] flex flex-col-reverse overflow-y-scroll'>
+    <div className='bg-gray-100 rounded-xl h-[500px] w-[400px] pl-2 flex flex-col-reverse overflow-y-scroll'>
         {chatMessages.map( (chatMsg, idx) => <ChatMessage key={idx} name={chatMsg.name} msg={chatMsg.msg}/>  )}  
     </div>
   )

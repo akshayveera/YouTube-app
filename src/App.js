@@ -10,6 +10,7 @@ import Demo from './components/Demo';
 import Demo2 from './components/Demo2';
 import Layout from './components/Layout';
 import SearchResults from './components/SearchResults';
+import LivePage from './components/LivePage';
 
 const appRouter = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const appRouter = createBrowserRouter([
           {
             path : "results",
             element : <SearchResults/>
+          },
+          {
+            path : "live",
+            element : <LivePage/>
           }
         ]
       }

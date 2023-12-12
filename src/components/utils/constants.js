@@ -13,4 +13,8 @@ export const YT_SEARCH_SUGGEST_API = "http://suggestqueries.google.com/complete/
 
 export const YT_SEARCH_LIST_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&key=" + GOOGLE_API_KEY + "&q=";
 
-export const YT_SEARCH_VIDEOS_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key="+ GOOGLE_API_KEY +"&id="
+export const YT_SEARCH_VIDEOS_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key="+ GOOGLE_API_KEY +"&id=";
+
+export const YT_COMMENTS_API = "https://www.googleapis.com/youtube/v3/commentThreads?key="+GOOGLE_API_KEY+"&textFormat=plainText&part=snippet&maxResults=100&orderby=published&videoId=";
+
+export const YT_VIDEO_BY_ID_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=" + GOOGLE_API_KEY + "&id="

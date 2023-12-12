@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 const Body = () => {
   return (
-    <div className='flex gap-5'>
+    <div className='flex '>
         <SideBar/>
         <Outlet/>
     </div>

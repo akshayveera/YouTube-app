@@ -1,155 +1,60 @@
 
-import React from 'react'
-import user from "../assets/header/user.png"
+import React, { useEffect, useState } from 'react'
+import { YT_COMMENTS_API } from './utils/constants';
+import { getApproxTime } from './utils/helper';
 
-const commentsData = [
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-            {
-                name : "Akshay",
-                text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                replies : [
-                    {
-                        name : "Akshay",
-                        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                        replies : [
-                            {
-                                name : "Akshay",
-                                text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                                replies : [
-                                    {
-                                        name : "Akshay",
-                                        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                                        replies : [
-                                            {
-                                                name : "Akshay",
-                                                text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                                                replies : [
-                                        
-                                                ]
-                                            },
-                                        ]
-                                    },
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        name : "Akshay",
-                        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                        replies : [
-                
-                        ]
-                    },
-
-                ]
-            },
-            {
-                name : "Akshay",
-                text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                replies : [
-        
-                ]
-            },
-            {
-                name : "Akshay",
-                text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-                replies : [
-        
-                ]
-            },
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-    {
-        name : "Akshay",
-        text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus saepe quaerat, rerum aliquid qui eveniet ut. Eos eligendi ab nesciunt.",
-        replies : [
-
-        ]
-    },
-]
-
-const CommentCard = ({ data }) => {
-    const { name, text } = data;
-
-    return (
-    <div className="flex gap-5 bg-gray-100 p-2 rounded-lg my-3">
-        <img className="h-10" src={user} alt="" />
-        <div className="">
-        <h2 className="font-bold">{name}</h2>
-        <p>{text}</p>
-        </div>
-    </div>
-    );
-};
-
-const CommentsList = ({comments})=>{
+const CommentCard = ({data})=>{
     
-    return comments.map((comment, index) => {
-        // disclaimer : don't use index as keys
-        return (
-            <div key={index}>
-                <CommentCard data={comment}/>
-                <div className='pl-5 ml-5 border-l-2 border-gray-300'>
-                    {/* I got a doubt here that how does this recursion end,because there is no exit condition */}
-                    <CommentsList comments={comment.replies}/>
-                </div>
-            </div> 
-            
-        )
-    })
+    const commentInfo = data?.snippet?.topLevelComment?.snippet;
 
+    const {authorDisplayName ,authorProfileImageUrl, textDisplay, publishedAt } = commentInfo;
+
+    return(
+        <div className='flex gap-5 mx-2 my-8'>
+            <img className='rounded-full h-10' src={authorProfileImageUrl} alt="" />
+            <div>
+                <div className='flex items-center'>
+                    <div className='text-sm font-semibold'>{authorDisplayName}</div>
+                    <div className='text-xs text-gray-400 ml-2'>{ " · " + getApproxTime(publishedAt)}</div>
+                    
+                </div>
+                <div>{textDisplay}</div>
+            </div>
+        </div>
+    )
 }
 
-const CommentsContainer = () => {
+const CommentsContainer = ({videoId}) => {
+
+    const [commentsData, setCommentsData] = useState([]);
+
+    useEffect(()=>{
+        getComments();
+    }, []);
+
+    const getComments = async ()=>{
+
+        const data = await fetch(YT_COMMENTS_API + videoId);
+        const json = await data.json();
+
+        setCommentsData(json.items);
+    }
+
+    if(commentsData.length === 0)
+    {
+        return;
+    } 
+
+    console.log(commentsData[0]);
+
   return (
     <div>
-        <h1 className='text-2xl font-bold mb-5'>Comments </h1>
-        <CommentsList comments={commentsData}/>
+        <div className='text-2xl ml-4 font-bold'>Comments</div>
+        {
+            commentsData.map((ele)=>{
+                return <CommentCard key={ele.id} data={ele}/>
+            })
+        }        
     </div>
   )
 }

@@ -19,6 +19,7 @@ import settings from "../assets/sidebar/settings.png"
 import feedback from "../assets/sidebar/feedback.png"
 import help from "../assets/sidebar/help.png"
 import flag from "../assets/sidebar/flag.png"
+import live from "../assets/sidebar/live.png"
 
 
 const SideBar = () => {
@@ -29,20 +30,26 @@ const SideBar = () => {
   if(!menu) return null;
 
   return (
-    <div className={'w-72 shadow-lg h-[calc(100vh-80px)] overflow-y-scroll '+ ( isMenuAbsolute? ' absolute bg-white' : '')} >
+    <div className={'w-64 h-[calc(100vh-80px)] no-scrollbar overflow-y-scroll  '+ ( isMenuAbsolute? ' absolute bg-white' : '')} >
       
       <ul className='p-2 m-2 border-b pb-4'>
         <Link to="/">
-          <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '>
+          <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '>
             <img src={home} alt="home logo" className='h-6'/>
             Home
           </li>
         </Link>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer'> 
           <img src={shorts} alt="home logo" className='h-6' />
           Shorts
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-2 '> 
+        <Link to="live">
+          <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer'>
+            <img src={live} alt="home logo" className='h-6'/>
+            Live
+          </li>
+        </Link>  
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-2 cursor-pointer'> 
           <img src={subscribe} alt="home logo" className='h-6' />
           Subscription
         </li>
@@ -50,61 +57,61 @@ const SideBar = () => {
 
       <ul className='p-2 m-2 border-b pb-2'>
         <li className='flex gap-1 text-lg items-center font-semibold mb-1'>You <img src={rightArrow} alt="" className='h-5' /></li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={history} alt="home logo" className='h-6' />
           History
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={watchLater} alt="home logo" className='h-6' />
           Watch Later
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={like} alt="home logo" className='h-6' />
           Liked
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={downArrow} alt="home logo" className='h-6' />
           Show more
         </li>
       </ul>
 
       <ul className='p-2 m-2 border-b '>
-        <li className='text-lg font-semibold pb-2'>Subscriptions</li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='text-lg font-semibold pb-2 '>Subscriptions</li>
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={akshay} alt="home logo" className='h-7 rounded-full' />
           Akshay Saini
-        </li><li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1'> 
+        </li><li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer'> 
           <img src={love} alt="home logo" className='h-7 rounded-full' />
           Love Babbar
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer'> 
           <img src={anuj} alt="home logo" className='h-7 rounded-full' />
           Anuj Bhaiya
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={harry} alt="home logo" className='h-7 rounded-full' />
           Code with harry
         </li>
-        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+        <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={codehelp} alt="home logo" className='h-7 rounded-full' />
           Codehelp
         </li>
       </ul>
 
       <ul className='p-2 m-2 border-b'>
-      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
           <img src={settings} alt="home logo" className='h-6' />
           Settings
       </li>
-      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
         <img src={flag} alt="home logo" className='h-6' />
         Report history
       </li>
-      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
         <img src={help} alt="home logo" className='h-6' />
         Help
       </li>
-      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 '> 
+      <li className='flex gap-5 w-full hover:bg-gray-100 rounded-lg py-2 pr-2 pl-4 my-1 cursor-pointer '> 
         <img src={feedback} alt="home logo" className='h-6' />
         Send Feedback
       </li>
