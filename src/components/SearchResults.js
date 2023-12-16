@@ -21,12 +21,12 @@ const SearchResults = () => {
     const getSearchResults = async () => {
         let videoIds = [];
 
-        const VideoIDsdata = await fetch(YT_SEARCH_LIST_API + searchedQuery);
-        const VideoIdsjson = await VideoIDsdata.json();
+        const videoIdsData = await fetch(YT_SEARCH_LIST_API + searchedQuery);
+        const videoIdsJson = await videoIdsData.json();
 
-        if(VideoIdsjson.items){
-          let videoIdList = VideoIdsjson?.items?.map((item) => item.id.videoId);
-          videoIds = videoIdList;
+        if(videoIdsJson.items){
+          let videoIdsList = videoIdsJson?.items?.map((item) => item.id.videoId);
+          videoIds = videoIdsList;
         }
 
         // console.log(1);

@@ -16,7 +16,7 @@ const VideoCard = ({info}) => {
     <div className={'p-2 m-1 ' + (menu ? 'w-[19rem]':'w-[22.5rem]')} >
         <img className={'rounded-lg ' + (menu ? 'h-40':'h-44')} src={thumbnails?.medium?.url} alt="" />
         <ul className='p-1'>
-            <li className='font-bold overflow-hidden mb-1'>{title}</li>
+            <li className='font-bold overflow-hidden mb-1'>{title.slice(0, 60) + "..."}</li>
             <li className='text-sm text-gray-500'>{channelTitle}</li>
             <li className='text-md text-gray-600'>{convertCounts(viewCount) + " views · " + getApproxTime(publishedAt)}  </li>
         </ul>

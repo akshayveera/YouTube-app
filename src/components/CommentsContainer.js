@@ -30,7 +30,7 @@ const CommentsContainer = ({videoId}) => {
 
     useEffect(()=>{
         getComments();
-    }, []);
+    }, [videoId]);
 
     const getComments = async ()=>{
 
@@ -40,12 +40,10 @@ const CommentsContainer = ({videoId}) => {
         setCommentsData(json.items);
     }
 
-    if(commentsData.length === 0)
+    if(commentsData === undefined)
     {
         return;
     } 
-
-    console.log(commentsData[0]);
 
   return (
     <div>

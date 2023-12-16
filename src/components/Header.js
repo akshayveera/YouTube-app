@@ -6,7 +6,7 @@ import mic from "../assets/header/mic.png"
 import user from "../assets/header/user.png"
 import search from "../assets/header/search.png"
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleMenu } from './utils/appSlice'
+import { toggleMenu , openMenu} from './utils/appSlice'
 import { YT_SEARCH_SUGGEST_API} from "./utils/constants"
 import { cacheResults } from './utils/searchSlice'
 import { Link } from 'react-router-dom'
@@ -62,14 +62,16 @@ const Header = () => {
     <div className='flex justify-between w-full my-2 items-center '>
         <div className='flex items-center gap-2 ml-5' >
             <img src={hamburger} alt="hamburger" className='h-5 cursor-pointer' onClick={()=>handleClick()}/>
-            <a href="/">
-                <img src={yt} alt="YouTube Logo" className='h-16'/>
-            </a>
+            <Link to="/">
+                <img src={yt} alt="YouTube Logo" className='h-16' onClick={()=>{
+                    dispatch(openMenu());
+                }}/>
+            </Link>
             
         </div>
         <div className="w-2/4 gap-2">
             <div className='flex items-center w-full '>
-                <input type="text" placeholder='search' className='h-4 p-5 pl-8 text-lg border border-gray-300 w-4/6 rounded-l-full '
+                <input type="text" placeholder='search' className='h-4 p-5 pl-8 text-base border border-gray-300 w-4/6 rounded-l-full '
                     value = {searchQuery}
                     onChange={(eve)=>{
                         if(eve.target.value === ""){

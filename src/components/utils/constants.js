@@ -1,8 +1,10 @@
 
 // search for "youtube api key auth"
-const GOOGLE_API_KEY = "AIzaSyC1JpdEKmXbPHgANWlFXNwV0i1eQLwO30Q";
+const GOOGLE_API_KEY = "AIzaSyAsXE36vYpyrkL67qk0J7-nm4BDDB2IB1k";
+//AIzaSyC1JpdEKmXbPHgANWlFXNwV0i1eQLwO30Q
 //AIzaSyBRGBpVKRiOpZupOCJclaA0tobzXcHRXj4
 //AIzaSyABpUgNmOCo7dlBv1U_0vxoTCc0FuhdKFY
+//AIzaSyAPXlVgpHlfXeHihxLC_UK5odwOVZc-3Ss
 
 export const LIVE_CHAT_COUNT = 20;
 

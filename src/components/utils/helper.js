@@ -225,3 +225,15 @@ export function getApproxTime(publishedTime) {
       return seconds + (seconds === 1 ? ' second ago' : ' seconds ago');
     }
   }
+
+
+  export function getFirstThreeWords(inputString) {
+    // Remove special characters using regex
+    const cleanedString = inputString.replace(/[^\w\s]/gi, '');
+  
+    // Split the cleaned string into an array of words
+    const words = cleanedString.split(/\s+/);
+  
+    // Return the first three words or less if the string has fewer than three words
+    return words.slice(0, 3).join(' ');
+  }

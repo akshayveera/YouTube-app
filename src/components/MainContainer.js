@@ -6,10 +6,11 @@ import { useSelector } from 'react-redux'
 
 const MainContainer = () => {
 
-  const menu = useSelector(store => store.app.isMenuOpen)
+  const menu = useSelector(store => store.app.isMenuOpen);  
+  
 
   return (
-    <div className={menu ? 'w-[84%]' : 'w-full'}>
+    <div className={ "mt-2 " + (menu ? 'w-[84%]' : 'w-full')}>
         <ButtonList/>
         <VideoContainer />
     </div>

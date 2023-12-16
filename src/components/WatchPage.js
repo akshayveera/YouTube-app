@@ -9,6 +9,7 @@ import check from "../assets/channel-check.png"
 import { convertCounts } from './utils/helper';
 import share from "../assets/share.png"
 import like from "../assets/sidebar/like.png"
+import RelatedVideos from './RelatedVideos';
 
 const WatchPage = () => {
 
@@ -31,15 +32,15 @@ const WatchPage = () => {
 
   useEffect(()=>{
     getVideoData();
-  }, [])
+  }, [searchParams])
 
   const getVideoData = async ()=>{
 
     const data = await fetch(YT_VIDEO_BY_ID_API + searchParams.get("v"));
     const json = await data.json();
 
+    // console.log(json?.items[0]);
     setVideoInfo(json?.items[0]);
-    console.log(json?.items[0]);
   }
 
 
@@ -49,8 +50,8 @@ const WatchPage = () => {
   }
 
   const {snippet, statistics} = videoInfo;
-  const {channelTitle, description, localized, publishedAt} = snippet;
-  const {commentCount, likeCount, viewCount} = statistics;
+  const {channelTitle, localized} = snippet;
+  const { likeCount, viewCount} = statistics;
 
   
 
@@ -106,7 +107,7 @@ const WatchPage = () => {
         {
           showMore ? (
             <div className='bg-gray-100 mt-5 mr-12 p-5 rounded-lg'>
-              {description}
+              {localized.description}
               <button className='font-semibold p-1 rounded-lg'
               onClick={()=>{
                 setShowMore(false);
@@ -114,7 +115,7 @@ const WatchPage = () => {
             </div>
           ) : (          
             <div className='bg-gray-100 mt-5 mr-12 p-5 rounded-lg'>
-              {description.slice(0, 235)}
+              {localized.description.slice(0, 235)}
               <button className='font-semibold p-1 rounded-lg'
               onClick={()=>{
                 setShowMore(true);
@@ -125,8 +126,12 @@ const WatchPage = () => {
 
 
         <div className='my-3 py-2'>
-          <CommentsContainer videoId={searchParams.get("v")}/>
+          <CommentsContainer videoId={searchParams.get("v") }/>
         </div>
+      </div>
+
+      <div>
+        <RelatedVideos title={localized.title}/>
       </div>
 
     </div>
