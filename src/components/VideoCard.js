@@ -13,8 +13,8 @@ const VideoCard = ({info}) => {
     const menu = useSelector(store => store.app.isMenuOpen)
 
   return (
-    <div className={'p-2 m-1 ' + (menu ? 'w-[19rem]':'w-[22.5rem]')} >
-        <img className={'rounded-lg ' + (menu ? 'h-40':'h-44')} src={thumbnails?.medium?.url} alt="" />
+    <div className={'p-2 m-1 ' + (menu ? 'w-[18rem]':'w-[22rem]')} >
+        <img className={'rounded-lg ' + (menu ? 'h-36':'h-44')} src={thumbnails?.medium?.url} alt="" />
         <ul className='p-1'>
             <li className='font-bold overflow-hidden mb-1'>{title.slice(0, 60) + "..."}</li>
             <li className='text-sm text-gray-500'>{channelTitle}</li>

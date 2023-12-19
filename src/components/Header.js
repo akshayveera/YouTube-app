@@ -83,7 +83,7 @@ const Header = () => {
                         setSearchQuery(eve.target.value);
                     }}
                     onFocus={()=>setShowSuggestion(true)}
-                    onBlur={()=>setShowSuggestion(false)}                    
+                    onBlur={()=>setTimeout(()=>{setShowSuggestion(false)}, 200)}                    
                 />
                 {
                     searchEmpty ? (
@@ -109,7 +109,10 @@ const Header = () => {
                     <ul >
                         {suggestions.map((s)=>{        
                             return(
-                                <li key={s} className="flex items-center gap-3 px-2"><img className='h-3' src={search} alt=""/><span className='mb-1'>{s}</span> </li>
+                                <Link key={s} to={"/results?search_query=" + s}>
+                                    <li  className="flex items-center gap-3 px-2 rounded-xl hover:bg-gray-100"><img className='h-3' src={search} alt=""/><span className='mb-1'>{s}</span> </li>
+
+                                </Link>
                             )
                         })}
                     </ul>

@@ -39,7 +39,7 @@ const LivePage = () => {
     const json = await data.json();
 
     setVideoInfo(json?.items[0]);
-    console.log(json?.items[0]);
+    // console.log(json?.items[0]);
   }
 
 

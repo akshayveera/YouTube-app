@@ -18,7 +18,7 @@ const RelatedVideos = ({title}) => {
         async function getRelatedvideos(title)
         {
             const query = getFirstThreeWords(title);
-            console.log(query);
+            // console.log(query);
 
             const videoIdsData = await fetch(YT_SEARCH_LIST_API + query);
             const videoIdsJson = await videoIdsData.json();

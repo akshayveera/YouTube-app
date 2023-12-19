@@ -27,11 +27,11 @@ const VideoContainer = () => {
   if(videos?.length === 0) return null;
 
   return (
-    <div className={'flex flex-wrap h-[calc(100vh-137px)] overflow-y-scroll  no-scrollbar ' + ( menu ? "ml-4" : "ml-10")} >
+    <div className={'flex flex-wrap justify-evenly h-[calc(100vh-137px)] overflow-y-scroll  no-scrollbar ' + ( menu ? "ml-4" : "ml-10")} >
       {videos?.map((video)=>{
         return(
           <Link key={video?.id} to={"watch?v="+video?.id}>
-            <VideoCard info={video} />
+            <VideoCard info={video}/>
           </Link>
         )
       })}      

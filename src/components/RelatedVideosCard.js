@@ -12,7 +12,7 @@ const RelatedVideosCard = ({data}) => {
     const {title, thumbnails, description, channelTitle, publishedAt } = snippet;
     const {viewCount} = statistics;
 
-    console.log(thumbnails);
+    // console.log(thumbnails);
 
     return (
         <div className='flex gap-3 w-[90%] ml-5 mt-6'>        

@@ -9,7 +9,7 @@ const GOOGLE_API_KEY = "AIzaSyAsXE36vYpyrkL67qk0J7-nm4BDDB2IB1k";
 export const LIVE_CHAT_COUNT = 20;
 
 // search for "youtube videos api"
-export const YOUTUBE_VIDEOS_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key="+GOOGLE_API_KEY;
+export const YOUTUBE_VIDEOS_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=48&regionCode=IN&key="+GOOGLE_API_KEY;
 
 export const YT_SEARCH_SUGGEST_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
