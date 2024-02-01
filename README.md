@@ -137,6 +137,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         - useRef : react tracks it (so the updated value doesn't get lost), but it doesn't rendered to UI, but when the component is rendered the updated value of useRef is also rendered to UI 
 
 
+### challenge faced while developing search suggetions
+
+    - Challenge : I got the list of search suggetions appearing when I type some query in search bar but the problem is when I click on one of the suggestion the app should search videos and show with the search query as the search suggestion I have clicked but that's not happening even appropriate routing is done.
+
+    - Where is the issue ?
+    - The issue is that onBlur event handler is used on search bar input tag to remove the suggestions when it loses focus and when I click on any search suggestion, what's happening is firstly onBlur event is getting executed, that means firstly suggestion is getting removed and next the click is being done (not on the suggestion but on some random point behind the suggestion clicked ) but as this happens with in milli-seconds it appears as we clicked on the search suggestion.
+
+    - Solution ?
+    - I have created some milli-seconds of delay on onBlur event using setTimeout(), to ensure that search suggestion is clicked before removing the suggestions from DOM
+
 
 
 
